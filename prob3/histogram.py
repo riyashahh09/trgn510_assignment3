@@ -1,13 +1,15 @@
 import sys
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
 arg_len = len(sys.argv)
 col = 2
 if (arg_len <2):
 	print("Provide file input as the first argument")
 	sys.exit(1)
 elif (arg_len == 2):
-	file_name = sys.argv[1]
+	file = sys.argv[1]
 #-f has not been used
 elif (arg_len == 3):
 	arg_col = sys.argv[1]
@@ -21,7 +23,7 @@ elif (arg_len == 3):
 	col = int(col)
 	file = sys.argv[2]
 elif (arg_len >3):
-	print ("Not enough arguments to run.")
+	print ("Too many arguments to run.")
 if (not file.endswith ('.tsv')):
 	print ("File has to end with .tsv.")
 	sys.exit(1)
@@ -34,4 +36,4 @@ plt.hist(df[name_col].astype(str), rwidth=0.8)
 plt.ylabel("Count")
 plt.xlabel(name_col)
 plt.show()
-plt.savefig('histogram.png')	
+plt.savefig('histogram.png')
